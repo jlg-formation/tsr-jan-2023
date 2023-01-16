@@ -1,22 +1,6 @@
 import "./style.scss";
-
-const svgns = "http://www.w3.org/2000/svg";
-
-const r = 1;
-const r0 = 45;
-const cx0 = 50;
-const cy0 = 50;
-
-const getAngleFromIndex = (index: number) => {
-  return (index * 2 * Math.PI) / 10;
-};
-
-const getPointFromAngle = (angle: number) => {
-  return {
-    x: cx0 + r0 * Math.cos(angle),
-    y: cy0 + r0 * Math.sin(angle),
-  };
-};
+import { r, svgns } from "./constants";
+import { getAngleFromIndex, getPointFromAngle } from "./misc";
 
 const container = document.querySelector("g.samples");
 if (container === null) {
