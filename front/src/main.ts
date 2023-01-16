@@ -1,5 +1,5 @@
 import "./style.scss";
-import { r, sampleNbr, svgns } from "./constants";
+import { multiplicationFactor, r, sampleNbr, svgns } from "./constants";
 import { drawLine, getAngleFromIndex, getPointFromAngle } from "./misc";
 import { Point } from "./interfaces/Point";
 
@@ -18,6 +18,9 @@ for (let i = 0; i < sampleNbr; i++) {
   container.appendChild(circle);
 }
 
-const p1: Point = { x: 20, y: 32 };
-const p2: Point = { x: 40, y: 52 };
-drawLine(p1, p2);
+for (let i = 0; i < sampleNbr; i++) {
+  const j = i * multiplicationFactor;
+  const p1: Point = getPointFromAngle(getAngleFromIndex(i));
+  const p2: Point = getPointFromAngle(getAngleFromIndex(j));
+  drawLine(p1, p2);
+}
