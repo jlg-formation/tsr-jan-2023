@@ -1,23 +1,30 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import { setupCounter } from './counter'
+import "./style.css";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+const svgns = "http://www.w3.org/2000/svg";
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+const r = 1;
+const r0 = 45;
+const cx0 = 50;
+const cy0 = 50;
+
+const getAngleFromIndex = (index: number) => {
+  return (index * 2 * Math.PI) / 10;
+};
+
+const getPointFromAngle = (angle: number) => {
+  return {
+    x: cx0 + r0 * Math.cos(angle),
+    y: cy0 + r0 * Math.sin(angle),
+  };
+};
+
+const container = document.querySelector("g.samples");
+for (let i = 0; i < 10; i++) {
+  const angle = getAngleFromIndex(i);
+  const { x: cx, y: cy } = getPointFromAngle(angle);
+  const circle = document.createElementNS(svgns, "circle");
+  circle.setAttributeNS(null, "cx", cx + "");
+  circle.setAttributeNS(null, "cy", cy + "");
+  circle.setAttributeNS(null, "r", r + "");
+  container?.appendChild(circle);
+}
