@@ -1,4 +1,4 @@
-import "./style.css";
+import "./style.scss";
 
 const svgns = "http://www.w3.org/2000/svg";
 
@@ -19,6 +19,10 @@ const getPointFromAngle = (angle: number) => {
 };
 
 const container = document.querySelector("g.samples");
+if (container === null) {
+  throw new Error("cannot find container");
+}
+
 for (let i = 0; i < 10; i++) {
   const angle = getAngleFromIndex(i);
   const { x: cx, y: cy } = getPointFromAngle(angle);
@@ -26,5 +30,5 @@ for (let i = 0; i < 10; i++) {
   circle.setAttributeNS(null, "cx", cx + "");
   circle.setAttributeNS(null, "cy", cy + "");
   circle.setAttributeNS(null, "r", r + "");
-  container?.appendChild(circle);
+  container.appendChild(circle);
 }
