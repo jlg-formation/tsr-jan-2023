@@ -1,21 +1,23 @@
+$color: blue;
+
 svg {
-  border: 0.1em solid black;
+  border: 0.1em solid $color;
   width: 50em;
   height: 30em;
 
   circle {
     fill: transparent;
-    stroke: black;
+    stroke: $color;
     stroke-width: 0.02em;
   }
 
   g.samples circle {
-    fill: black;
+    fill: $color;
     stroke: transparent;
   }
 
   g.lines line {
-    stroke: black;
+    stroke: $color;
     stroke-width: 0.02em;
   }
 }
